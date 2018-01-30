@@ -11,6 +11,9 @@ angular.module('starter.services', [])
             },
             courses: function() {
                 return $http.get(baseURL + "data/myCourses", header);
+            },
+            lessons: function () {
+                return $http.get(baseURL + "data/listInfos", header);
             }
         };
     })

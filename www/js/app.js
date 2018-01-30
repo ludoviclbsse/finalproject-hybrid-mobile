@@ -86,6 +86,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                         controller: 'CoursesCtrl'
                     }
                 }
+            })
+
+            .state('lessons', {
+                url: '/courses/:lessonCode',
+                templateUrl: 'templates/lessons.html',
+                controller: 'LessonsCtrl'
             });
 
         // if none of the above states are matched, use this as the fallback

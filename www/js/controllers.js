@@ -54,6 +54,21 @@ angular.module('starter.controllers', [])
             });
     })
 
+    .controller('LessonsCtrl', function ($scope, BackendAPI, $stateParams) {
+        $scope.LessonsList = BackendAPI.lessons()
+            .then(function (res) {
+                $scope.LessonsList = res.data;
+                console.log(res);
+            })
+            .catch(function (err) {
+                console.log("Connection error : " + JSON.stringify(err));
+            })
+            .finally(function () {
+                console.log("Finish ");
+            });
+        $scope.currentCategory = $stateParams.lessonCode;
+    })
+
     /*
     .controller('AccountCtrl', function ($scope) {
         $scope.regObj = {
