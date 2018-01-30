@@ -8,6 +8,9 @@ angular.module('starter.services', [])
             },
             login: function (data) {
                 return $http.post(baseURL + "users/login", data, header);
+            },
+            courses: function() {
+                return $http.get(baseURL + "data/myCourses", header);
             }
         };
     })

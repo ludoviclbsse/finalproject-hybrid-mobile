@@ -40,12 +40,25 @@ angular.module('starter.controllers', [])
     .controller('ProfileCtrl', function ($scope) {
     })
 
-    .controller('CoursesCtrl', function ($scope) {
+    .controller('CoursesCtrl', function ($scope, BackendAPI) {
+        $scope.Courseslist = BackendAPI.courses()
+            .then(function (res) {
+                $scope.Courseslist = res.data;
+                console.log(res);
+            })
+            .catch(function (err) {
+                console.log("Connection error : " + JSON.stringify(err));
+            })
+            .finally(function () {
+                console.log("Finish ");
+            });
     })
 
+    /*
     .controller('AccountCtrl', function ($scope) {
         $scope.regObj = {
             "email": '',
             "password": ''
         };
-    });
+    })*/
+    ;

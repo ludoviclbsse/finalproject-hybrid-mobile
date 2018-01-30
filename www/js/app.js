@@ -56,17 +56,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
             // Each tab has its own nav history stack:
 
-            .state('tab.courses', {
-                url: '/courses',
-                views: {
-                    'tab-courses': {
-                        templateUrl: 'templates/tab-courses.html',
-                        controller: 'CoursesCtrl'
-                    }
-                }
-            })
 
-            .state('tab.account', {
+
+            /*.state('tab.account', {
                 url: '/account',
                 views: {
                     'tab-account': {
@@ -74,7 +66,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                         controller: 'AccountCtrl'
                     }
                 }
-            })
+            })*/
 
             .state('tab.profile', {
                 url: '/profile',
@@ -82,6 +74,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                     'tab-profile': {
                         templateUrl: 'templates/tab-profile.html',
                         controller: 'ProfileCtrl'
+                    }
+                }
+            })
+
+            .state('tab.courses', {
+                url: '/courses',
+                views: {
+                    'tab-courses': {
+                        templateUrl: 'templates/tab-courses.html',
+                        controller: 'CoursesCtrl'
                     }
                 }
             });
