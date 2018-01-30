@@ -1,9 +1,41 @@
-<ion-view view-title="Account">
+<ion-view view-title="Account" style="background:#00BFFF">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <ion-item class="item-thumbnail" style="text-align:center; background:#00BFFF">
+      <img src="../img/logo.png" style="width:50%"/>
+    </ion-item>
+  	<form name="myForm" ng-submit="mySubmit()" novalidate>
+	 <ion-list>
+
+		 <ion-item style="background:#FFFFE0" class="item-input" ng-class="{'has-errors': myForm.myemail.$dirty && myForm.myemail.$error, 'noerrors': myForm.myemail.$dirty && myForm.myemail.$valid}">
+		 <span class="input-label">Email</span>
+		 <input type="email" name="myemail" ng-model="regObj.email" ng-maxlength="30" required>
+		 </ion-item>
+
+		 <div class="error-container" ng-show="myForm.myemail.$dirty && myForm.myemail.$invalid && myForm.myemail.$touched">
+		 <div class="error">
+		 <i class="ion-information-circled"></i>
+		 <span ng-show="myForm.myemail.$error.required">This is required</span>
+		 <span ng-show="myForm.myemail.$error.email">Enter email somthing@domain.abc</span>
+		 <span ng-show="myForm.myemail.$error.maxlength">max length is 30 characters</span>
+		 </div>
+		 </div>
+
+		 <ion-item style="background:#FFFFE0" class="item-input" ng-class="{'has-errors': myForm.username.$dirty && myForm.username.$error,'no-errors' : myForm.username.$dirty && myForm.username.$valid}">
+		 <span class="input-label">Password</span>
+		 <input type="text" name="password" ng-model="regObj.username" ng-minlength="5" ng-maxlength="20" required >
+		 </ion-item>
+
+		 <div class="error-container" ng-show="myForm.username.$dirty && myForm.username.$invalid && myForm.username.$touched">
+		 <div class="error">
+		 <i class="ion-information-circled"></i>
+		 <span ng-show="myForm.username.$error.required">This is required</span>
+		 <span ng-show="myForm.username.$error.minlength">min length is 5 characters</span>
+		 <span ng-show="myForm.username.$error.maxlength">max length is 20 characters</span>
+		 </div>
+		 </div>
+		</ion-list>
+
+		<button type="submit" ng-disabled="myForm.$invalid" class="button button-block button-assertive">Connexion</button>
+	</form>
   </ion-content>
 </ion-view>

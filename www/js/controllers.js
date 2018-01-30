@@ -1,28 +1,51 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+    .controller('LoginCtrl', function ($scope, $state, BackendAPI) {
+        $scope.loginUser = {login: null, password: null};
+        $scope.goToSignup = function () {
+            $state.go('signup');
+        };
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+        $scope.doLoging = function () {
+            BackendAPI.login($scope.loginUser)
+                .then(function (res) {
+                    $state.go('tab.profile');
+                })
+                .catch(function (err) {
+                    console.log("Connection error : " + JSON.stringify(err));
+                })
+                .finally(function () {
+                    console.log("Finish ");
+                });
+        };
+    })
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
+    .controller('SignupCtrl', function ($scope, BackendAPI, $state) {
+        $scope.newUser = {firstname: null, lastname: null, email: null, password: null};
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+        $scope.doSignup = function () {
+            BackendAPI.register($scope.newUser)
+                .then(function (res) {
+                    $state.go('tab.profile');
+                })
+                .catch(function (err) {
+                    console.log("Connection error : " + JSON.stringify(err));
+                })
+                .finally(function () {
+                    console.log("Finish ");
+                });
+        };
+    })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+    .controller('ProfileCtrl', function ($scope) {
+    })
+
+    .controller('CoursesCtrl', function ($scope) {
+    })
+
+    .controller('AccountCtrl', function ($scope) {
+        $scope.regObj = {
+            "email": '',
+            "password": ''
+        };
+    });
