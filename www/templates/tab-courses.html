@@ -1,7 +1,7 @@
 <ion-view title="Courses" style="background-color:#E6F2FF">
     <ion-content class="padding">
         <ion-list>
-            <ion-item class="item-thumbnail-left item-text-wrap" ng-repeat="item in Courseslist" href="#/tab/courses/{{item.Name}}">
+            <ion-item class="item-thumbnail-left item-text-wrap" ng-repeat="item in Courseslist" href="#/course/{{item.Name}}">
                 <img ng-src="{{item.Image}}"/>
                 <h2>{{item.Name}}</h2>
                 <p>{{item.Description | limitTo: 80}}</p>

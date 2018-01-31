@@ -1,9 +1,10 @@
 <ion-view view-title="{{currentCategory}}">
     <ion-content class="padding">
         <ion-list >
-            <ion-item class="item-thumbnail-left" ng-repeat="item in LessonsList | filter: currentCategory">
-                <img src="{{item.Name}}"/>
-                <h2>{{item.Description}}</h2>
+            <ion-item class="item-thumbnail-left item-text-wrap" ng-repeat="item in Lessonslist | filter: currentCategory">
+                <img src="{{item.image}}"/>
+                <h2>{{item.Name}}</h2>
+                <p>{{item.Description}}</p>
             </ion-item>
         </ion-list>
     </ion-content>

@@ -55,9 +55,9 @@ angular.module('starter.controllers', [])
     })
 
     .controller('LessonsCtrl', function ($scope, BackendAPI, $stateParams) {
-        $scope.LessonsList = BackendAPI.lessons()
+        $scope.Lessonslist = BackendAPI.lessons()
             .then(function (res) {
-                $scope.LessonsList = res.data;
+                $scope.Lessonslist = res.data;
                 console.log(res);
             })
             .catch(function (err) {
